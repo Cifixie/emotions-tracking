@@ -16,7 +16,9 @@
     "start:lambda": "netlify-lambda serve src/lambda",
     "build": "run-p build:**",
     "build:app": "react-scripts build",
-    "build:lambda": "netlify-lambda build src/lambda"
+    "build:lambda": "netlify-lambda build src/lambda",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -28,8 +30,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@babel/plugin-transform-object-assign": "^7.2.0",
-    "babel-loader": "^8.0.5",
-    "http-proxy-middleware": "^0.19.1"
+    "babel-loader": "^8.0.5"
   }
 }
