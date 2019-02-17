@@ -4,15 +4,19 @@
   "private": true,
   "dependencies": {
     "netlify-identity-widget": "^1.5.2",
+    "netlify-lambda": "^1.4.2",
+    "npm-run-all": "^4.1.5",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-scripts": "2.1.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "run-p start:**",
+    "start:app": "react-scripts start",
+    "start:lambda": "netlify-lambda serve src/lambda",
+    "build": "run-p build:**",
+    "build:app": "react-scripts build",
+    "build:lambda": "netlify-lambda build src/lambda"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -22,5 +26,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/plugin-transform-object-assign": "^7.2.0",
+    "babel-loader": "^8.0.5",
+    "http-proxy-middleware": "^0.19.1"
+  }
 }
