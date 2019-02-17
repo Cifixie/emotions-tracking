@@ -4,12 +4,6 @@ import netlifyIdentity from "netlify-identity-widget";
 const settings = {
   container: "#netlify-modal"
 };
-/*
-localStorage.setItem(
-  "netlifySiteURL",
-  "https://emotions-tracking.netlify.com/"
-);
-*/
 
 class Identity extends PureComponent {
   constructor(props) {
@@ -66,7 +60,12 @@ class Identity extends PureComponent {
   logout = () => netlifyIdentity.logout();
 
   render() {
+    const { children } = this.props;
     const { user, err } = this.state;
+    const forward = {};
+    if (user) {
+      forward.access_token = user.token.access_token;
+    }
     return (
       <div>
         <div id="netlify-modal" />
@@ -82,6 +81,7 @@ class Identity extends PureComponent {
           )}
           {err && <pre>{err}</pre>}
         </div>
+        {children(forward)}
       </div>
     );
   }
