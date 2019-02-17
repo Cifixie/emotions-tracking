@@ -51,6 +51,7 @@ class Identity extends PureComponent {
   };
   onLogout = () => {
     console.log("Logged out");
+    this.setUser();
   };
   onError = err => {
     console.error("Error", err);
